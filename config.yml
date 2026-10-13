@@ -1,0 +1,93 @@
+# Do not send notifications for the first run
+baseline_on_first_run: true
+
+request_timeout_seconds: 30
+
+apprise_webhooks:
+  - name: "email"
+    url: "mailtos://username:password@mailserver:587?from=sender@host&to=recipient@host"
+  - name: "telegram"
+    url: "tgram://chat_id:token"
+
+feeds:
+  - name: "firefly"
+    feed_url: "https://github.com/firefly-iii/firefly-iii/releases.atom"
+    include_filter:
+      - 'v\d+\.\d+\.\d+'      # Include standard semver releases
+    exclude_filter:
+      - '(?i)alpha|beta|rc|develop'   # Exclude pre-releases
+
+  - name: "firefly-importer"
+    feed_url: "https://github.com/firefly-iii/data-importer/releases.atom"
+    include_filter:
+      - 'v\d+\.\d+\.\d+'
+    exclude_filter:
+      - '(?i)alpha|beta|rc|develop'
+
+  - name: "apprise"
+    feed_url: "https://github.com/caronc/apprise/releases.atom"
+    include_filter: []
+    exclude_filter:
+      - '(?i)pre'
+
+  - name: "endurain"
+    feed_url: "https://github.com/endurain-project/endurain/releases.atom"
+    include_filter:
+      - 'v\d+\.\d+\.\d+'
+    exclude_filter:
+      - '(?i)alpha|beta|rc'
+
+  - name: "audiobookshelf"
+    feed_url: "https://github.com/advplyr/audiobookshelf/releases.atom"
+    include_filter:
+      - 'v\d+\.\d+\.\d+'
+    exclude_filter:
+      - '(?i)alpha|beta|rc'
+
+  - name: "jellyfin"
+    feed_url: https://github.com/jellyfin/jellyfin/releases.atom
+    include_filter:
+      - '\d+\.\d+\.\d+'
+      - '\d+\.\d+'
+    exclude_filter:
+      - '(?i)alpha|beta|rc'
+
+  - name: "navidrome"
+    feed_url: "https://github.com/navidrome/navidrome/releases.atom"
+    include_filter:
+      - 'v\d+\.\d+\.\d+'
+    exclude_filter:
+      - '(?i)alpha|beta|rc'
+
+  - name: "wealthfolio"
+    feed_url: "https://github.com/wealthfolio/wealthfolio/releases.atom"
+    include_filter:
+      - 'v\d+\.\d+\.\d+'
+    exclude_filter:
+      - '(?i)alpha|beta|rc'
+
+  - name: "immich"
+    feed_url: "https://github.com/immich-app/immich/releases.atom"
+    include_filter:
+      - 'v\d+\.\d+\.\d+'
+    exclude_filter:
+      - '(?i)alpha|beta|rc'
+
+  - name: "vaultwarden"
+    feed_url: "https://github.com/dani-garcia/vaultwarden/releases.atom"
+    include_filter:
+      - 'v\d+\.\d+\.\d+'
+    exclude_filter:
+      - '(?i)alpha|beta|rc'
+
+  - name: "nextcloud"
+    feed_url: "https://github.com/nextcloud/server/releases.atom"
+    include_filter:
+      - 'v\d+\.\d+\.\d+'
+    exclude_filter:
+      - '(?i)alpha|beta|rc'
+
+  - name: "homeassistant"
+    feed_url: "https://www.home-assistant.io/atom.xml"
+    include_filter:
+      - '^\d+\.\d+'
